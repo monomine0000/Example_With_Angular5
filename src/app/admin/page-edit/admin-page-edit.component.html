@@ -1,0 +1,61 @@
+<div class="row">
+    <a class="btn" [routerLink]="['/admin']">Back to page list</a>
+</div>
+<div class="row">
+    <p *ngIf="response.success">{{ response.message }}</p>
+    <form #pageForm="ngForm" (ngSubmit)="onSubmit(pageForm)" class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="title" name="title" type="text" class="validate" [value]="page.title" [ngModel]="page.title" required #title="ngModel">
+                <label for="title">title</label>
+                <div *ngIf="title.errors && (title.dirty || title.touched)" class="alert alert-danger">
+                    <div [hidden]="!title.errors.required">
+                        title is required!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="content" name="content" type="text" [value]="page.content" class="validate" [ngModel]="page.content" required #content="ngModel">
+                <label for="content">content</label>
+                <div *ngIf="content.errors && (content.dirty || content.touched)" class="alert alert-danger">
+                    <div [hidden]="!content.errors.required">
+                        Content is required!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="slug" type="text" name="slug" class="validate" [value]="page.slug" [ngModel]="page.slug" required #slug="ngModel">
+                <label for="slug">slug</label>
+            </div>
+            <div *ngIf="slug.errors && (slug.dirty || slug.touched)" class="alert alert-danger">
+                <div [hidden]="!slug.errors.required">
+                    Slug is required!
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label for="parentId">Select the parentId for page</label>
+            <select name="parentId" id="parentId" class="browser-default" [ngModel]="page.parentId">
+                <option value="" selected>none</option>
+                <ng-container *ngFor="let pageSelect of pageList">
+                    <option *ngIf="pageSelect.pageId !== page.pageId" [value]="pageSelect.pageId">{{ pageSelect.title }}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="row">
+            <label>
+                <input type="checkbox" class="filled-in" name="isDefault" [checked]="page.isDefault" [ngModel]="page.isDefault">
+                <span>is default page?</span>
+            </label>
+        </div>
+        <button type="submit" *ngIf="pageForm.valid" class="btn"><i class="material-icons">save</i></button>
+        <a class="btn" [routerLink]="['/admin']">
+            <i class="material-icons">cancel</i>
+        </a>
+        <input type="hidden" name="pageId" [value]="page.pageId" [ngModel]="page.pageId">
+    </form>
+</div>

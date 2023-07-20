@@ -1,0 +1,32 @@
+<div class="row">
+    <a class="btn" [routerLink]="['/admin/page']">Create new page</a>
+</div>
+<div class="row">
+    <div class="col s3">
+        Заголовок
+    </div>
+    <div class="col s3">
+        Контент
+    </div>
+    <div class="col s3">
+        Дефолтная страница
+    </div>
+    <div class="col s3">
+        Действия
+    </div>
+</div>
+<div class="row" *ngFor="let page of pageList">
+    <div class="col s3">
+        {{ page.title }}
+    </div>
+    <div class="col s3">
+        {{ page.content }}
+    </div>
+    <div class="col s3">
+        {{ page.isDefault }}
+    </div>
+    <div class="col s3">
+        <a class="btn" [routerLink]="['page', page.pageId]"><i class="material-icons">edit</i></a>
+        <button type="button" (click)="deletePage(page.pageId)" class="btn"><i class="material-icons">delete</i></button>
+    </div>
+</div>

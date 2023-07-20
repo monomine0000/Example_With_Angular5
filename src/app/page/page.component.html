@@ -1,0 +1,11 @@
+<div *ngIf="!isError">
+    <h3>
+        {{ page.title }}
+    </h3>
+    <p>
+        {{ page.content }}
+    </p>
+</div>
+<div *ngIf="isError">
+    <app-error title="Ошибка" [description]="errorMessage"></app-error>
+</div>

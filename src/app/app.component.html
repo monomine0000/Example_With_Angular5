@@ -1,0 +1,36 @@
+<nav>
+    <div class="nav-wrapper">
+        <a [routerLink]="['']" class="brand-logo">Bro</a>
+        <!--<ul id="nav-mobile" class="right hide-on-med-and-down">-->
+        <!--<li><a [routerLink]="['']">Главная</a></li>-->
+        <!--<li><a [routerLink]="['/auth/login']">Войти</a></li>-->
+        <!--</ul>-->
+        <app-menu cssClass="right hide-on-med-and-down"></app-menu>
+    </div>
+</nav>
+<div class="row">
+    <div class="demo-ribbon"></div>
+    <div class="demo-layout">
+        <main class="demo-main">
+            <div class="demo-container">
+                <div class=""></div>
+                <div class="demo-content card-panel col s12 m8 offset-m2">
+                    <!--<div class="demo-crumbs">-->
+                    <!--Google &gt; Material Design Lite &gt; How to install Materialize CSS-->
+                    <!--</div>-->
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<footer class="demo-footer">
+    <div class="mdl-mini-footer--left-section">
+        <!--<ul class="mdl-mini-footer&#45;&#45;link-list">-->
+        <!--<li><a [routerLink]="['']">Главная</a></li>-->
+        <!--<li><a [routerLink]="['/auth/login']">Войти</a></li>-->
+        <!--</ul>-->
+        <app-menu cssClass="mdl-mini-footer--link-list"></app-menu>
+    </div>
+</footer>
+

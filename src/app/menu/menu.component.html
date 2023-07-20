@@ -1,0 +1,5 @@
+<ul class="{{ cssClass }}">
+    <li><a [routerLink]="['']">Главная</a></li>
+    <li *ngIf="isAuth"><a [routerLink]="['/auth/logout']">Выйти</a></li>
+    <li *ngIf="!isAuth"><a [routerLink]="['/auth/login']">Войти</a></li>
+</ul>

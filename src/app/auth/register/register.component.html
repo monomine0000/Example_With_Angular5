@@ -1,0 +1,32 @@
+<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+    <div *ngIf="errorMessage" class="form-group"> {{ errorMessage }}</div>
+    <div class="form-group">
+        <label for="username">username</label>
+        <input type="text" class="form-control" id="username" name="username" ngModel required #username="ngModel">
+        <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger">
+            <div [hidden]="!username.errors.required">
+                username is required!
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" class="form-control" id="email" name="email" ngModel required #email="ngModel">
+        <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+            <div [hidden]="!email.errors.required">
+                email is required!
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">password</label>
+        <input type="password" class="form-control" id="password" name="password" ngModel required #password="ngModel">
+        <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+            <div [hidden]="!password.errors.required">
+                password is required!
+            </div>
+        </div>
+    </div>
+    <button type="submit" *ngIf="registerForm.valid" class="btn btn-success">Submit</button>
+</form>
